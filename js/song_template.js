@@ -3,7 +3,7 @@
 function SongTemplate(data) {
   return `
   <ul class="song-info">
-    <li>${data.Rank}</li>
+    <li class="rank">${data.Rank}</li>
     <li>${data.SongTitle}</li>
     <li>${data.Artist}</li>
     <li>${data.GoodSong}</li>

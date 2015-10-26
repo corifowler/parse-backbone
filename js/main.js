@@ -30,6 +30,10 @@ function renderSongs() {
 
     let $li = $(SongTemplate(data));  
 
+    if (data.GoodSong === true) {
+      $li.css('background-color', '#FFFF93');
+    }
+
     $ul.append($li);
 
   });

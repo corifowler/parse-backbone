@@ -2019,9 +2019,17 @@
   content: ""; }
 
 body {
-  background: #e2ebf3; }
+  background: #e2ebf3;
+  font-family: 'Loved by the King', cursive; }
   body .container ul li {
+    display: inline-block;
+    font-size: 20px;
+    padding: 25px; }
+  body .song-info {
     border: 1px solid black;
-    display: inline-block; }
+    margin-top: 2px;
+    margin-bottom: 5px;
+    padding-left: 0;
+    max-width: 50%; }
 
 /*# sourceMappingURL=main.css.map */

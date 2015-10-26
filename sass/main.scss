@@ -3,10 +3,21 @@
 
 body {
   background: #e2ebf3;
+  font-family: 'Loved by the King', cursive;
 
-  .container ul li {
-    border: 1px solid black; 	
+
+  .container ul li { 	
     display: inline-block;
+    font-size: 20px;
+    padding: 25px;
+  }
+
+  .song-info {
+    border: 1px solid black;
+    margin-top: 2px;
+    margin-bottom: 5px;
+    padding-left: 0;
+    max-width: 50%;
   }
 }
 

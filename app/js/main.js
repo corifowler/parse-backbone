@@ -52,6 +52,10 @@ function renderSongs() {
 
     var $li = (0, _jquery2['default'])((0, _song_template2['default'])(data));
 
+    if (data.GoodSong === true) {
+      $li.css('background-color', '#FFFF93');
+    }
+
     $ul.append($li);
   });
 
@@ -125,7 +129,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 function SongTemplate(data) {
-  return "\n  <ul class=\"song-info\">\n    <li>" + data.Rank + "</li>\n    <li>" + data.SongTitle + "</li>\n    <li>" + data.Artist + "</li>\n    <li>" + data.GoodSong + "</li>\n  </ul>";
+  return "\n  <ul class=\"song-info\">\n    <li class=\"rank\">" + data.Rank + "</li>\n    <li>" + data.SongTitle + "</li>\n    <li>" + data.Artist + "</li>\n    <li>" + data.GoodSong + "</li>\n  </ul>";
 }
 
 exports["default"] = SongTemplate;
