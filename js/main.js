@@ -30,8 +30,10 @@ function renderSongs() {
 
     let $li = $(SongTemplate(data));  
 
-    if (data.GoodSong === true) {
+    if (data.GoodSong === 'Awesome Song') {
       $li.css('background-color', '#FFFF93');
+    } else {
+      $li.css('background-color', '#F14326');
     }
 
     $ul.append($li);

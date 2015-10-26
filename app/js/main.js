@@ -52,8 +52,10 @@ function renderSongs() {
 
     var $li = (0, _jquery2['default'])((0, _song_template2['default'])(data));
 
-    if (data.GoodSong === true) {
+    if (data.GoodSong === 'Awesome Song') {
       $li.css('background-color', '#FFFF93');
+    } else {
+      $li.css('background-color', '#F14326');
     }
 
     $ul.append($li);
@@ -123,17 +125,24 @@ module.exports = exports['default'];
 },{"backbone":5}],4:[function(require,module,exports){
 // Template for how I want songs to be displayed
 
-"use strict";
+'use strict';
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
   value: true
 });
 function SongTemplate(data) {
-  return "\n  <ul class=\"song-info\">\n    <li class=\"rank\">" + data.Rank + "</li>\n    <li>" + data.SongTitle + "</li>\n    <li>" + data.Artist + "</li>\n    <li>" + data.GoodSong + "</li>\n  </ul>";
+
+  if (data.GoodSong === true) {
+    data.GoodSong = 'Awesome Song';
+  } else {
+    data.GoodSong = 'Bad Song';
+  }
+
+  return '\n  <ul class="song-info">\n    <li class="rank">' + data.Rank + ' |</li>\n    <li>' + data.SongTitle + ' |</li>\n    <li>' + data.Artist + ' |</li>\n    <li>' + data.GoodSong + ' |</li>\n  </ul>';
 }
 
-exports["default"] = SongTemplate;
-module.exports = exports["default"];
+exports['default'] = SongTemplate;
+module.exports = exports['default'];
 
 },{}],5:[function(require,module,exports){
 (function (global){
