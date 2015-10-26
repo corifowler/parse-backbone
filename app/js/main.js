@@ -23,6 +23,10 @@ var _song_collection = require('./song_collection');
 
 var _song_collection2 = _interopRequireDefault(_song_collection);
 
+var _song_template = require('./song_template');
+
+var _song_template2 = _interopRequireDefault(_song_template);
+
 var APP_ID = 'Y954L4tr9ymGcvFM00lyUiprW9BGK77hrEjXZKL5';
 var API_KEY = 'JsdNtIMcCcHOkxXUWS1QM0cE3u0ANjtfaK0xS6qr';
 
@@ -35,7 +39,28 @@ _jquery2['default'].ajaxSetup({
 
 });
 
-},{"./song_collection":2,"./song_model":3,"jquery":5,"moment":6,"underscore":7}],2:[function(require,module,exports){
+var songs = new _song_collection2['default']();
+
+function renderSongs() {
+
+  var $ul = (0, _jquery2['default'])('<ul></ul>');
+
+  songs.each(function (song) {
+
+    var data = song.toJSON();
+    console.log('data', data);
+
+    var $li = (0, _jquery2['default'])((0, _song_template2['default'])(data));
+
+    $ul.append($li);
+  });
+
+  (0, _jquery2['default'])('.container').html($ul);
+}
+
+songs.fetch().then(renderSongs);
+
+},{"./song_collection":2,"./song_model":3,"./song_template":4,"jquery":6,"moment":7,"underscore":8}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -67,7 +92,7 @@ var SongCollection = _backbone2['default'].Collection.extend({
 exports['default'] = SongCollection;
 module.exports = exports['default'];
 
-},{"./song_model":3,"backbone":4}],3:[function(require,module,exports){
+},{"./song_model":3,"backbone":5}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -91,7 +116,22 @@ var SongModel = _backbone2['default'].Model.extend({
 exports['default'] = SongModel;
 module.exports = exports['default'];
 
-},{"backbone":4}],4:[function(require,module,exports){
+},{"backbone":5}],4:[function(require,module,exports){
+// Template for how I want songs to be displayed
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function SongTemplate(data) {
+  return "\n  <ul class=\"song-info\">\n    <li>" + data.Rank + "</li>\n    <li>" + data.SongTitle + "</li>\n    <li>" + data.Artist + "</li>\n    <li>" + data.GoodSong + "</li>\n  </ul>";
+}
+
+exports["default"] = SongTemplate;
+module.exports = exports["default"];
+
+},{}],5:[function(require,module,exports){
 (function (global){
 //     Backbone.js 1.2.3
 
@@ -1990,7 +2030,7 @@ module.exports = exports['default'];
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"jquery":5,"underscore":7}],5:[function(require,module,exports){
+},{"jquery":6,"underscore":8}],6:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -11202,7 +11242,7 @@ return jQuery;
 
 }));
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 //! moment.js
 //! version : 2.10.6
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -14398,7 +14438,7 @@ return jQuery;
     return _moment;
 
 }));
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
